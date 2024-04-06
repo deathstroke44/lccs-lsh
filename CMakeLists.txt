@@ -3,7 +3,7 @@
 PROJECT(LCCS_LSH)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.12)
-link_directories("/home/kabir/boost_installation")
+
 #since the code uses structure binding which is the standard of C++17, 
 #there is the minimum version requisite for the compiler
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
@@ -28,7 +28,7 @@ set(CMAKE_CXX_FLAGS "-Wall -Wno-unused-variable -Wno-int-in-bool-context -Wno-si
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 # set(CMAKE_CXX_FLAGS_RELEASE "-O3 -g -fsanitize=undefined")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-set(BOOST_ROOT "/home/kabir/boost_installation")
+
 
 find_package(Boost COMPONENTS program_options REQUIRED)
 if(Boost_FOUND)

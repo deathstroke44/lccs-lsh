@@ -84,48 +84,28 @@ int main(int argc, char **argv)
 	float **query=nullptr;
 	Result **results=nullptr;
 
-	if(vm.count("binary_input")){
-		if(datasetFilename!=""){
-			dataArr = unique_ptr<F2DArray>(new F2DArray({(size_t)n, (size_t)d}));
-			data = dataArr->to_ptr();
-			if (read_data_binary(n, d, datasetFilename.c_str(), data) == 1) {
-				printf("Reading dataset error!\n");
-				return 1;
-			}
+	if(datasetFilename!=""){
+		dataArr = unique_ptr<F2DArray>(new F2DArray({(size_t)n, (size_t)d}));
+		data = dataArr->to_ptr();
+		if (read_data(n, d, datasetFilename.c_str(), data) == 1) {
+			printf("Reading dataset error!\n");
+			return 1;
 		}
+	}
 
-		if(queryFilename!=""){
-			queryArr = unique_ptr<F2DArray>(new F2DArray({(size_t)qn, (size_t)d}));
-			query = queryArr->to_ptr();
-			if (read_data_binary(qn, d, queryFilename.c_str(), query) == 1) {
-				printf("Reading query set error!\n");
-				return 1;
-			}
-		}
-	} else{
-		if(datasetFilename!=""){
-			dataArr = unique_ptr<F2DArray>(new F2DArray({(size_t)n, (size_t)d}));
-			data = dataArr->to_ptr();
-			if (read_data(n, d, datasetFilename.c_str(), data) == 1) {
-				printf("Reading dataset error!\n");
-				return 1;
-			}
-		}
-
-		if(queryFilename!=""){
-			queryArr = unique_ptr<F2DArray>(new F2DArray({(size_t)qn, (size_t)d}));
-			query = queryArr->to_ptr();
-			if (read_data(qn, d, queryFilename.c_str(), query) == 1) {
-				printf("Reading query set error!\n");
-				return 1;
-			}
+	if(queryFilename!=""){
+		queryArr = unique_ptr<F2DArray>(new F2DArray({(size_t)qn, (size_t)d}));
+		query = queryArr->to_ptr();
+		if (read_data(qn, d, queryFilename.c_str(), query) == 1) {
+			printf("Reading query set error!\n");
+			return 1;
 		}
 	}
 
 	if(groundtruthFilename!=""){
 		resultArr = unique_ptr<NDArray<2, Result>>(new NDArray<2, Result>({(size_t)qn, (size_t)MAXK}));
 		results = resultArr->to_ptr();
-		if (read_ground_truth(qn, groundtruthFilename.c_str(), results) == 1) {
+		if (read_ground_truthV2(qn, d, groundtruthFilename.c_str(), results, data, query) == 1) {
 			printf("Reading Truth Set Error!\n");
 			return 1;
 		}

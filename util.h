@@ -50,6 +50,18 @@ int read_data_binary(						// read data set from disk
 	const char *fname,					// address of data
 	Scalar **data);						// data (return)
 
+
+
+// -----------------------------------------------------------------------------
+int read_ground_truthV2(				// read ground truth results from disk
+	int qn,
+	int d,								// number of query objects
+	const char *fname,					// address of truth set
+	Result **R,
+	float **data,
+	float **query);	
+
+
 // -----------------------------------------------------------------------------
 int read_ground_truth(				// read ground truth results from disk
 	int    qn,							// number of query objects
@@ -297,6 +309,9 @@ inline ScalarType calc_inner_product(int dim, const ScalarType* x, const ScalarT
 	};
 	return fast_reduce(dim, x, y, fProd, fSum);
 }
+
+
+
 
 // -----------------------------------------------------------------------------
 template<class ScalarType>

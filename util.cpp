@@ -68,6 +68,46 @@ void create_dir(					// create dir if the path exists
 	}
 }
 
+template<class DType>
+void readFVecsFromExternal(const char* filepath, DType **data, int N, int maxRow=-1) {
+  FILE *infile = fopen(filepath, "rb");
+  if (infile == NULL) {
+    std::cout << "File not found" << std::endl;
+    return;
+  }
+  
+  int rowCt = 0;
+  int dimen;
+  while (true) {
+    if (fread(&dimen, sizeof(int), 1, infile) == 0) {
+      break;
+    }
+    if (dimen != N) {
+      std::cout << "N and actual dimension mismatch" << std::endl;
+      return;
+    }
+    std::vector<DType> v(dimen);
+    if(fread(v.data(), sizeof(DType), dimen, infile) == 0) {
+      std::cout << "Error when reading" << std::endl;
+    };
+    
+    for (int i=0; i<dimen; i++) {
+      data[rowCt][i]= v[i];
+    }
+
+    rowCt++;
+    
+    if (maxRow != -1 && rowCt >= maxRow) {
+      break;
+    }
+  }
+  // std::cout<<"Row count test: "<<rowCt<<std::endl;
+
+  if (fclose(infile)) {
+    std::cout << "Could not close data file" << std::endl;
+  }
+}
+
 // -----------------------------------------------------------------------------
 int read_data(						// read data/query set from disk
 	int   n,							// number of data/query objects
@@ -75,23 +115,7 @@ int read_data(						// read data/query set from disk
 	const char *fname,					// address of data/query set
 	float **data)						// data/query objects (return)
 {
-	FILE *fp = fopen(fname, "r");
-	if (!fp) {
-		printf("Could not open %s\n", fname);
-		return 1;
-	}
-
-	int i   = 0;
-	int tmp = -1;
-	while (!feof(fp) && i < n) {
-		assert(fscanf(fp, "%d", &tmp) == 1);
-		for (int j = 0; j < d; ++j) {
-			assert(fscanf(fp, " %f", &data[i][j]) == 1);
-		}
-		++i;
-	}
-	fclose(fp);
-
+	readFVecsFromExternal<float>(fname, data, d, n);
 	return 0;
 }
 
@@ -145,6 +169,55 @@ int read_ground_truth(				// read ground truth results from disk
 	return 0;
 }
 
+// -----------------------------------------------------------------------------
+int read_ground_truthV2(				// read ground truth results from disk
+	int qn,
+	int d,								// number of query objects
+	const char *fname,					// address of truth set
+	Result **R,
+	float **data,
+	float **query)							// ground truth results (return)
+{
+	FILE *infile = fopen(fname, "rb");
+	if (infile == NULL) {
+		std::cout << "File not found" << std::endl;
+		return 1;
+	}
+	
+	int rowCt = 0;
+	int dimen;
+	while (true) {
+		if (fread(&dimen, sizeof(int), 1, infile) == 0) {
+			break;
+		}
+		if (dimen != MAXK) {
+			std::cout << "N and actual dimension mismatch" << std::endl;
+			return 1;
+		}
+		std::vector<int> v(MAXK);
+		if(fread(v.data(), sizeof(int), dimen, infile) == 0) {
+			std::cout << "Error when reading" << std::endl;
+		};
+		
+		for (int i=0; i<MAXK; i++) {
+			R[rowCt][i].id_ = v[i]+1;
+			R[rowCt][i].key_ = calc_l2_dist(d, query[rowCt], data[v[i]]);
+		}
+
+		rowCt++;
+		
+		if (qn != -1 && rowCt >= qn) {
+			break;
+		}
+	}
+	// std::cout<<"Row count test: "<<rowCt<<std::endl;
+
+	if (fclose(infile)) {
+		std::cout << "Could not close data file" << std::endl;
+		return 1;
+	}
+	return 0;
+}
 
 void normalize(
 	int dim, 
