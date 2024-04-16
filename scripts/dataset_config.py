@@ -42,7 +42,7 @@ class Gist:
         self.qn = 1000
         self.d = 960
         self.r = 0.66
-        self.name = 'Gist'
+        self.name = 'gist'
         self.k=100
 
 class Glove:
