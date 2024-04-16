@@ -7,6 +7,5 @@ from run_time_recall import run_alg
 
 os.chdir('/data/kabir/similarity-search/models/lccs-lsh/build')
 if __name__ == '__main__':
-    run_alg([LCCS()], [Astro()], 'l2')
-    run_alg([LCCS()], [BigANN()], 'l2')
-    run_alg([LCCS()], [Seismic()], 'l2')
+    run_alg([LCCS()], [LastFm()], 'l2')
+    run_alg([LCCS()], [NyTimes()], 'l2')

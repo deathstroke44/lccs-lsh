@@ -1,3 +1,30 @@
+class Astro:
+    def __init__(self):
+        self.n = 1000000
+        self.qn = 100
+        self.d = 256
+        self.r = 0.66
+        self.name = 'astro1m'
+        self.k=100
+        
+class BigANN:
+    def __init__(self):
+        self.n = 1000000
+        self.qn = 100
+        self.d = 128
+        self.r = 0.66
+        self.name = 'bigann'
+        self.k=100
+        
+class Deep:
+    def __init__(self):
+        self.n = 1000000
+        self.qn = 200
+        self.d = 256
+        self.r = 0.66
+        self.name = 'deep'
+        self.k=20
+        
 
 
 class Deep:
@@ -26,6 +53,15 @@ class Glove:
         self.name = 'glove'
         self.r =  0.66
         self.k=20
+
+class LastFm:
+    def __init__(self):
+        self.n = 292385
+        self.qn = 100
+        self.d  = 65
+        self.name = 'lastfm'
+        self.r =  0.66
+        self.k=100
 
 
 class MNIST:
@@ -73,6 +109,33 @@ class Netflix:
         self.r = 0.66
         self.name = 'netflix'
         self.k=100
+
+class NyTimes:
+    def __init__(self):
+        self.n = 290000
+        self.qn = 100
+        self.d  = 256
+        self.name = 'nytimes'
+        self.r =  0.66
+        self.k=100
+        
+class Sald:
+    def __init__(self):
+        self.n = 1000000
+        self.qn = 100
+        self.d = 128
+        self.r = 0.66
+        self.name = 'sald1m'
+        self.k=100
+        
+class Seismic:
+    def __init__(self):
+        self.n = 1000000
+        self.qn = 100
+        self.d = 256
+        self.r = 0.66
+        self.name = 'seismic1m'
+        self.k=100
         
 class Sift:
     def __init__(self):
@@ -81,6 +144,33 @@ class Sift:
         self.d = 128
         self.r = 0.66
         self.name = 'sift'
+        self.k=100
+        
+class Space:
+    def __init__(self):
+        self.n = 1000000
+        self.qn = 100
+        self.d = 100
+        self.r = 0.66
+        self.name = 'space1V'
+        self.k=100
+        
+class Text:
+    def __init__(self):
+        self.n = 1000000
+        self.qn = 100
+        self.d = 200
+        self.r = 0.66
+        self.name = 'text-to-image'
+        self.k=100
+        
+class Uqv:
+    def __init__(self):
+        self.n = 1000000
+        self.qn = 10000
+        self.d = 256
+        self.r = 0.66
+        self.name = 'uqv'
         self.k=100
         
 class Trevi:
@@ -102,4 +192,16 @@ class Yahoo:
         self.d = 300
         self.r = 0.66
         self.name = 'yahoomusic'
+        self.k=100
+        
+
+
+        
+class WordToVec:
+    def __init__(self):
+        self.n = 1000000
+        self.qn = 1000
+        self.d = 300
+        self.r = 0.66
+        self.name = 'word2vec'
         self.k=100

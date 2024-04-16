@@ -34,7 +34,7 @@ def create_results_folder(path='../results'):
 
 
 def get_output_filename(dataset, method, curtime=''):
-    return '/data/kabir/similarity-search/lccs-results/%s_%s_[%s].out'%(dataset.name, method, curtime)
+    return '/data/kabir/similarity-search/models/lccs-lsh/lccs-results/%s_%s_[%s].out'%(dataset.name, method, curtime)
 
 def get_dataset_params(ds):
     return '-n %d -q %d -d %d -D %s -Q %s'%(ds.n, ds.qn, ds.d, 
