@@ -7,5 +7,4 @@ from run_time_recall import run_alg
 
 
 if __name__ == '__main__':
-    datasets = [MNIST()]
-    run_alg([LCCS()], [MNIST()], 'l2')
+    run_alg([LCCS()], [MovieLens()], 'l2')
