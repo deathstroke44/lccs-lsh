@@ -7,6 +7,15 @@ class Astro:
         self.name = 'astro1m'
         self.k=100
         
+class Audio:
+    def __init__(self):
+        self.n = 53387
+        self.qn = 200
+        self.d = 192
+        self.r = 0.66
+        self.name = 'audio'
+        self.k=20
+        
 class BigANN:
     def __init__(self):
         self.n = 1000000
@@ -16,6 +25,24 @@ class BigANN:
         self.name = 'bigann'
         self.k=100
         
+class Cifar:
+    def __init__(self):
+        self.n = 50000
+        self.qn = 200
+        self.d = 512
+        self.r = 0.66
+        self.name = 'cifar'
+        self.k=20
+        
+class Crawl:
+    def __init__(self):
+        self.n = 1989995
+        self.qn = 10000
+        self.d = 300
+        self.r = 0.66
+        self.name = 'crawl'
+        self.k=100
+        
 class Deep:
     def __init__(self):
         self.n = 1000000
@@ -23,6 +50,15 @@ class Deep:
         self.d = 256
         self.r = 0.66
         self.name = 'deep'
+        self.k=20
+        
+class Enron:
+    def __init__(self):
+        self.n = 94987
+        self.qn = 200
+        self.d = 1369
+        self.r = 0.66
+        self.name = 'enron'
         self.k=20
         
 
@@ -43,6 +79,15 @@ class Glove:
         self.qn = 200
         self.d  = 100
         self.name = 'glove'
+        self.r =  0.66
+        self.k=20
+
+class ImageNet:
+    def __init__(self):
+        self.n = 2340373
+        self.qn = 200
+        self.d  = 150
+        self.name = 'imageNet'
         self.r =  0.66
         self.k=20
 
@@ -92,6 +137,15 @@ class NUSW:
         self.r = 0.66
         self.name = 'nuswide'
         self.k=20
+
+class Notre:
+    def __init__(self):
+        self.n = 332668
+        self.qn = 200
+        self.d = 128
+        self.r = 0.66
+        self.name = 'notre'
+        self.k=20
         
 class Netflix:
     def __init__(self):
@@ -110,6 +164,15 @@ class NyTimes:
         self.name = 'nytimes'
         self.r =  0.66
         self.k=100
+
+class Random:
+    def __init__(self):
+        self.n = 1000000
+        self.qn = 200
+        self.d  = 100
+        self.name = 'random'
+        self.r =  0.66
+        self.k=20
         
 class Sald:
     def __init__(self):
@@ -147,6 +210,15 @@ class Space:
         self.name = 'space1V'
         self.k=100
         
+class Sun:
+    def __init__(self):
+        self.n = 79106
+        self.qn = 200
+        self.d = 512
+        self.r = 0.66
+        self.name = 'sun'
+        self.k=20
+        
 class Text:
     def __init__(self):
         self.n = 1000000
@@ -156,6 +228,15 @@ class Text:
         self.name = 'text-to-image'
         self.k=100
         
+class Ukbench:
+    def __init__(self):
+        self.n = 1097907
+        self.qn = 200
+        self.d = 128
+        self.r = 0.66
+        self.name = 'ukbench'
+        self.k=20
+        
 class Uqv:
     def __init__(self):
         self.n = 1000000
@@ -163,6 +244,15 @@ class Uqv:
         self.d = 256
         self.r = 0.66
         self.name = 'uqv'
+        self.k=100
+        
+class Tiny:
+    def __init__(self):
+        self.n = 5000000
+        self.qn = 1000
+        self.d = 384
+        self.r = 0.66
+        self.name = 'tiny5m'
         self.k=100
         
 class Trevi:
