@@ -2,7 +2,7 @@ from dataset_config import *
 from method_config import *
 import os
 from time import gmtime, strftime
-
+dataset_path = '/data/kabir/similarity-search/dataset/'
 #a decorator
 def list_expansion(f):
     def g(*args, **kwargs):
@@ -18,11 +18,11 @@ def list_expansion(f):
 
 
 def get_dataset_path(dataset):
-    return '../data/%s/%s.dsb'%(dataset.name, dataset.name)
+    return dataset_path+'%s/base.fvecs'%(dataset.name)
 def get_query_path(dataset):
-    return '../data/%s/%s.qb'%(dataset.name, dataset.name)
+    return dataset_path+'%s/query.fvecs'%(dataset.name)
 def get_grount_truth_path(dataset, dist_name='l2'):
-    return '../data/%s/%s.%s'%(dataset.name, dataset.name, dist_name)
+    return dataset_path+'%s/groundtruth.ivecs'%(dataset.name)
 
 def create_results_folder(path='../results'):
     try: 
@@ -33,7 +33,7 @@ def create_results_folder(path='../results'):
 
 
 def get_output_filename(dataset, method, curtime=''):
-    return '../results/%s_%s_[%s].out'%(dataset.name, method, curtime)
+    return '/data/kabir/similarity-search/lccs-results/%s_%s_[%s].out'%(dataset.name, method, curtime)
 
 def get_dataset_params(ds):
     return '-n %d -q %d -d %d -D %s -Q %s'%(ds.n, ds.qn, ds.d, 
@@ -86,7 +86,6 @@ def run_alg(method_obj, dataset, distance, curtime=None, binary_name='./lccs'):
     common_args = get_common_params(dataset, method_name, curtime=curtime)
 
     distance_dataset_arg = get_dataset_distance_params(dataset, distance)
-
     for method_arg in method_obj.for_param(distance):
         cmd = '%s %s %s %s %s'%(binary_name, method_name_arg, common_args, distance_dataset_arg, method_arg)
         print(cmd)

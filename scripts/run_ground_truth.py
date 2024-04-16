@@ -1,14 +1,15 @@
 from dataset_config import *
 import os
 import sys
+dataset_path = '/data/kabir/similarity-search/dataset/'
 
 
 def get_dataset_path(dataset, isbinary=True):
     suffix = 'dsb' if isbinary else 'ds'
-    return '../data/%s/%s.%s'%(dataset.name, dataset.name, suffix)
+    return dataset_path+'%s/%s.%s'%(dataset.name, dataset.name, suffix)
 def get_query_path(dataset, isbinary=True):
     suffix = 'qb' if isbinary else 'q'
-    return '../data/%s/%s.%s'%(dataset.name, dataset.name, suffix)
+    return dataset_path+'%s/%s.%s'%(dataset.name, dataset.name, suffix)
 
 
 def run_ground_truth(datasets, dist='l2', isbinary=True):
