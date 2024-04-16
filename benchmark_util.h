@@ -18,12 +18,12 @@ void benchmark(
     const QueryFunc& fQuery, 
     const ListFactoryFunc& fListFactory)
 {
-    std::cout << outputFilename << std::endl;
-    FILE* fp = fopen(outputFilename.c_str(), "a+");
-    if (!fp) {
-        printf("cannot open file %s\n", outputFilename.c_str());
-        return;
-    }
+    // std::cout << outputFilename << std::endl;
+    // FILE* fp = fopen(outputFilename.c_str(), "a+");
+    // if (!fp) {
+    //     printf("cannot open file %s\n", outputFilename.c_str());
+    //     return;
+    // }
 
 	timeval start_time, end_time;
     gettimeofday(&start_time, NULL);
