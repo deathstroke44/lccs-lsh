@@ -2,6 +2,7 @@ from dataset_config import *
 from method_config import *
 import os
 from time import gmtime, strftime
+from datetime import datetime
 dataset_path = '/data/kabir/similarity-search/dataset/'
 #a decorator
 def list_expansion(f):
@@ -49,7 +50,7 @@ def get_dataset_distance_params(ds, distance):
 
 def get_common_params(ds, method, maxqn=100, curtime=None):
     if curtime is None:
-        curtime = strftime("%m-%d_%H_%M", gmtime())
+        curtime = datetime.utcnow().isoformat(sep=' ', timespec='milliseconds')
     actual_qn = min(maxqn, ds.qn)
     return '-n %d -q %d -d %d -D %s -Q %s -O %s --binary_input'%\
         (ds.n, actual_qn, ds.d, 
@@ -95,7 +96,7 @@ def run_alg(method_obj, dataset, distance, curtime=None, binary_name='./lccs'):
 possible_algs = [LCCS(), LCCS_MP(), C2LSH(), E2LSH(), MPLSH()]
 possible_distances = ['l2', 'angle']
 # possible_datasets = [MNIST784(), Sift(), Sift10M(), Gist(), Trevi(), Glove(), Glove100(), Msong(), Deep()]
-possible_datasets = [Sift(), Gist(), Glove100(), Msong(), Deep()]
+possible_datasets = [Sift(), Gist(), Glove(), Msong(), Deep()]
 
 if __name__ == '__main__':
     create_results_folder()
