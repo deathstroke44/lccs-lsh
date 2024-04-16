@@ -27,14 +27,6 @@ class Deep:
         
 
 
-class Deep:
-    def __init__(self):
-        self.n = 1000000
-        self.qn = 200
-        self.d = 256
-        self.r = 0.66
-        self.name = 'deep'
-        self.k=20
         
 class Gist:
     def __init__(self):

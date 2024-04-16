@@ -47,6 +47,9 @@ void benchmark(
         gettimeofday(&start_time, NULL);
 
         top_k = kMIPs[num];
+        if (top_k>MAXK) {
+            break;
+        }
         auto list = fListFactory(top_k);
         std::vector<float> ratios(qn);
         std::vector<float> recalls(qn);
