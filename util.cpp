@@ -305,13 +305,16 @@ float calc_recall(					// calc recall (percentage)
 	const Result *R,					// ground truth results 
 	MaxK_List *list)					// results returned by algorithms
 {
-	int i = list->size()-1;
-	int last = k - 1;
-	//loop until list->ithkey >= R[last].key
-	while (i >= 0 && R[last].key_ - list->ith_key(i) > FLOATZERO) {
-		i--;
+	int cnt=0;
+	for(int i=0;i<k;i++) {
+		for(int j=0;j<k;j++) {
+			if (list->ith_id(i) == R[j].id_-1) {
+				cnt++;
+				break;
+			}
+		}
 	}
-	return (i + 1) * 100.0f / k;
+	return (cnt) * 100.0f / k;
 }
 
 // -----------------------------------------------------------------------------
