@@ -287,3 +287,114 @@ class WordToVec:
         self.r = 0.66
         self.name = 'word2vec'
         self.k=100
+        
+
+
+        
+class ETHZ:
+    def __init__(self):
+        self.n = 36643
+        self.qn = 100
+        self.d = 256
+        self.r = 0.66
+        self.name = 'ethz'
+        self.k=100
+        
+
+
+        
+class VCSEIS:
+    def __init__(self):
+        self.n = 160178
+        self.qn = 100
+        self.d = 256
+        self.r = 0.66
+        self.name = 'vcseis'
+        self.k=100
+        
+
+
+        
+class TXED:
+    def __init__(self):
+        self.n = 519589
+        self.qn = 100
+        self.d = 256
+        self.r = 0.66
+        self.name = 'txed'
+        self.k=100
+        
+
+
+        
+class LENDB:
+    def __init__(self):
+        self.n = 1000000
+        self.qn = 100
+        self.d = 256
+        self.r = 0.66
+        self.name = 'lendb'
+        self.k=100
+        
+
+
+        
+class STEAD:
+    def __init__(self):
+        self.n = 1000000
+        self.qn = 100
+        self.d = 256
+        self.r = 0.66
+        self.name = 'stead'
+        self.k=100
+        
+
+
+        
+class GEOFON:
+    def __init__(self):
+        self.n = 275174
+        self.qn = 100
+        self.d = 128
+        self.r = 0.66
+        self.name = 'geofon'
+        self.k=100
+        
+
+
+        
+class INSTANCEGM:
+    def __init__(self):
+        self.n = 1000000
+        self.qn = 100
+        self.d = 128
+        self.r = 0.66
+        self.name = 'instancegm'
+        self.k=100
+        
+
+
+        
+class MUSIC:
+    def __init__(self):
+        self.n = 1000000
+        self.qn = 100
+        self.d = 100
+        self.r = 0.66
+        self.name = 'Music'
+        self.k=100
+        
+
+
+        
+class YELP:
+    def __init__(self):
+        self.n = 77079
+        self.qn = 100
+        self.d = 50
+        self.r = 0.66
+        self.name = 'Yelp'
+        self.k=100
+        
+
+
